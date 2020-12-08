@@ -130,8 +130,8 @@ function repeatString(value, count) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  return str.replace(value, '');
 }
 
 /**
@@ -145,8 +145,8 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.slice(1, -1);
 }
 
 
@@ -160,8 +160,8 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  return str.toUpperCase();
 }
 
 /**
@@ -179,8 +179,11 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  // let arr = [];
+  // arr =
+  return str.split(';');
+//  arr.forEach((e) => e);
 }
 
 /**
@@ -193,9 +196,9 @@ function extractEmails(/* str */) {
  *
  * @example
  *
- *            '┌────┐\n'+
- *  (6,4) =>  '│    │\n'+
- *            '│    │\n'+
+ *            '┌────┐\n'+ ┌ ┐ ─ ─
+ *  (6,4) =>  '│    │\n'+ └ ┘
+ *            '│    │\n'+ │
  *            '└────┘\n'
  *
  *  (2,2) =>  '┌┐\n'+
@@ -227,8 +230,21 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const s1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz?!';
+  const s2 = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm?!';
+  const arr1 = s1.split('');
+  const arr2 = s2.split('');
+  let result = '';
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] !== ' ') {
+      result += arr2[arr1.indexOf(str[i])];
+    } else {
+      result += ' ';
+    }
+    // result += String.fromCharCode(str.charCodeAt(i) + 13);
+  }
+  return result;
 }
 
 /**
@@ -246,6 +262,9 @@ function encodeToRot13(/* str */) {
  */
 function isString(/* value */) {
   throw new Error('Not implemented');
+
+  // console.log(value);
+  // return (typeof (value) === 'string');
 }
 
 
