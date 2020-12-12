@@ -254,7 +254,6 @@ function getMovingSum(arr) {
   const res = [];
   arr.reduce((prev, item) => {
     res.push(prev + item);
-
     return prev + item;
   }, 0);
   return res;
@@ -271,8 +270,9 @@ function getMovingSum(arr) {
  * [ 'a', 'b', 'c' , null ]  => [ "b", null ]
  * [ "a" ] => []
  */
-function getSecondItems(/* arr */) {
-  throw new Error('Not implemented');
+function getSecondItems(arr) {
+  const result = arr.filter((_, i) => i % 2 !== 0);
+  return result;
 }
 
 
@@ -292,6 +292,10 @@ function getSecondItems(/* arr */) {
  */
 function propagateItemsByPositionIndex(/* arr */) {
   throw new Error('Not implemented');
+
+  // if (arr.length < 2) { return arr; }
+  // const result = arr.map((e, i) => Number(String(e).repeat(i + 1)));
+  // return result;
 }
 
 
@@ -308,8 +312,13 @@ function propagateItemsByPositionIndex(/* arr */) {
  *   [ 1,2,3,4,5,6,7,8,9,10 ] => [ 10, 9, 8 ]
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
-function get3TopItems(/* arr */) {
-  throw new Error('Not implemented');
+function compareNumbers(a, b) {
+  return a - b;
+}
+
+function get3TopItems(arr) {
+  const result = arr.sort(compareNumbers).reverse().slice(0, 3);
+  return result;
 }
 
 
@@ -326,8 +335,9 @@ function get3TopItems(/* arr */) {
  *   [ null, 1, 'elephant' ] => 1
  *   [ 1, '2' ] => 1
  */
-function getPositivesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getPositivesCount(arr) {
+  const result = arr.filter((e) => Number.isInteger(e) && e > 0);
+  return result.length;
 }
 
 /**
@@ -359,8 +369,9 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   [ -1, 1, -1, 1 ]      => 0
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
-function getItemsSum(/* arr */) {
-  throw new Error('Not implemented');
+function getItemsSum(arr) {
+  const result = arr.reduce((prev, item) => prev + item, 0);
+  return result;
 }
 
 /**
@@ -377,6 +388,9 @@ function getItemsSum(/* arr */) {
  */
 function getFalsyValuesCount(/* arr */) {
   throw new Error('Not implemented');
+
+  // const result = arr.filter((e) => e !== true);
+  // return result.length;
 }
 
 /**
@@ -393,10 +407,10 @@ function getFalsyValuesCount(/* arr */) {
  *    [ null, undefined, null ], null => 2
  *    [ true, 0, 1, 'true' ], true => 1
  */
-function findAllOccurences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurences(arr, item) {
+  const result = arr.filter((e) => e === item);
+  return result.length;
 }
-
 /**
  * Concatenates all elements from specified array into single string with ',' delimeter
  *
@@ -410,6 +424,9 @@ function findAllOccurences(/* arr, item */) {
  */
 function toStringList(/* arr */) {
   throw new Error('Not implemented');
+
+  // const result = arr.join().slice(0, -1);
+  // return result;
 }
 
 
@@ -439,8 +456,26 @@ function toStringList(/* arr */) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  arr.sort((a, b) => {
+    const m1 = a.country;
+    const m2 = b.country;
+    const n1 = a.city;
+    const n2 = b.city;
+    if (m1 < m2) {
+      return -1;
+    }
+    if (m1 > m2) {
+      return 1;
+    }
+    if (n1 < n2) {
+      return -1;
+    }
+    if (n1 > n2) {
+      return 1;
+    } return 0;
+  });
+  return arr;
 }
 
 /**
