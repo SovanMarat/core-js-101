@@ -290,12 +290,17 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
-
-  // if (arr.length < 2) { return arr; }
-  // const result = arr.map((e, i) => Number(String(e).repeat(i + 1)));
-  // return result;
+function propagateItemsByPositionIndex(arr) {
+  if (arr.length < 2) { return arr; }
+  const result = arr.map((e, i) => {
+    const r = [];
+    r.length = i + 1;
+    r.fill(e);
+    // console.log(r);
+    return r;
+  });
+  // console.log(result);
+  return result.flat();
 }
 
 
@@ -513,8 +518,21 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  let s = start;
+
+  const en = end - start + 1;
+  const arr = [];
+  arr.length = en;
+  arr.fill(0);
+  const result = arr.map((e) => {
+    let t = e;
+    t = s;
+    s += 1;
+    // el = e + 1;
+    return t;
+  });
+  return result;
 }
 
 /**
