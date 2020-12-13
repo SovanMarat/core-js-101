@@ -528,14 +528,15 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  const result = new Set(arr);
+  return Array.from(result);
 }
 
 /**
  * Groups elements of the specified array by key.
  * Returns multimap of keys extracted from array elements via keySelector callback
- * and values extracted via valueSelector callback.
+3 * and values extracted via valueSelector callback.
  * See: https://en.wikipedia.org/wiki/Multimap
  *
  * @param {array} array
