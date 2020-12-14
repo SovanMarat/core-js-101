@@ -262,8 +262,11 @@ function encodeToRot13(str) {
  */
 function isString(/* value */) {
   throw new Error('Not implemented');
-
-  // console.log(value);
+  // if (value === undefined) { return false; }
+  // // if (value.length < 1) { return false; }
+  // if (value === null) { return false; }
+  // return typeof (value.toString()) === 'string';
+  // // console.log(value);
   // return (typeof (value) === 'string');
 }
 

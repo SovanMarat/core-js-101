@@ -107,8 +107,9 @@ function getArrayOfStrings(arr) {
  *    [ 1, 2, 3, 4, 5, 'false' ]         => [ 1, 2, 3, 4, 5, 'false' ]
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
-function removeFalsyValues(/* arr */) {
-  throw new Error('Not implemented');
+function removeFalsyValues(arr) {
+  const result = arr.filter((e) => Boolean(e));
+  return result;
 }
 
 /**
@@ -391,11 +392,9 @@ function getItemsSum(arr) {
  *  [ -1, 'false', null, 0 ] => 2
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
-
-  // const result = arr.filter((e) => e !== true);
-  // return result.length;
+function getFalsyValuesCount(arr) {
+  const result = arr.filter((e) => !e);
+  return result.length;
 }
 
 /**
@@ -599,8 +598,10 @@ function group(/* array, keySelector, valueSelector */) {
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  // throw new Error('Not implemented');
+  const result = arr.map((e) => childrenSelector(e));
+  return result.flat();
 }
 
 
@@ -616,8 +617,9 @@ function selectMany(/* arr, childrenSelector */) {
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
-function getElementByIndexes(/* arr, indexes */) {
-  throw new Error('Not implemented');
+function getElementByIndexes(arr, indexes) {
+  const res = arr.flat().flat().flat();
+  return res[indexes[indexes.length - 1]];
 }
 
 
@@ -639,8 +641,17 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  // throw new Error('Not implemented');
+  let center = [];
+  const c = Math.floor(arr.length / 2);
+  if (arr.length % 2 !== 0) {
+    center.push(Math.ceil(arr.length / 2));
+  } else center = [];
+  const start = arr.slice(c + center.length, arr.length);
+  const end = arr.slice(0, c);
+  const result = start.concat(center, end);
+  return result;
 }
 
 
